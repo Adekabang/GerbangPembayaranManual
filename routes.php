@@ -21,7 +21,7 @@ Route::get('/gerbangpembayaranmanual/payment/{order_id}', function ($order_id) {
     $bank_name_2 = ExtensionHelper::getConfig('GerbangPembayaranManual', 'bank_name_2');
     $merchant_name_2 = ExtensionHelper::getConfig('GerbangPembayaranManual', 'merchant_name_2');
     $bank_account_number_2 = ExtensionHelper::getConfig('GerbangPembayaranManual', 'bank_account_number_2');
-    if ($bank_name_2 != 0 && $merchant_name_2 != '') {
+    if ($bank_name_2 != 0 && $merchant_name_2 != '' && $bank_account_number_2 != '') {
         array_push($bank_list, $bank_name_2);
         array_push($merchant_list, $merchant_name_2);
         array_push($bank_account_list, $bank_account_number_2);
@@ -30,7 +30,7 @@ Route::get('/gerbangpembayaranmanual/payment/{order_id}', function ($order_id) {
     $bank_name_3 = ExtensionHelper::getConfig('GerbangPembayaranManual', 'bank_name_3');
     $merchant_name_3 = ExtensionHelper::getConfig('GerbangPembayaranManual', 'merchant_name_3');
     $bank_account_number_3 = ExtensionHelper::getConfig('GerbangPembayaranManual', 'bank_account_number_3');
-    if ($bank_name_3 != 0 && $merchant_name_3 != '') {
+    if ($bank_name_3 != 0 && $merchant_name_3 != '' && $bank_account_number_3 != '') {
         array_push($bank_list, $bank_name_3);
         array_push($merchant_list, $merchant_name_3);
         array_push($bank_account_list, $bank_account_number_3);
