@@ -85,7 +85,7 @@ $whatsappLink = "https://wa.me/$whatsapp_number?text=$confirmation_message%0AOrd
                                 <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Receipt</h5>
                                 <div class="flex items-baseline text-gray-900 dark:text-white">
                                     <span class="text-3xl font-semibold">Rp</span>
-                                    <span class="text-5xl font-extrabold tracking-tight">60</span>
+                                    <span class="text-5xl font-extrabold tracking-tight">{{ $total }}</span>
                                 </div>
                                 <ul role="list" class="space-y-5 my-7">
                                     <li class="flex space-x-3">
