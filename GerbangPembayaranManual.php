@@ -163,7 +163,7 @@ class GerbangPembayaranManual extends Gateway
                 'name' => 'confirmation_message',
                 'friendlyName' => 'Confirmation message send by Customer via Whatsapp',
                 'type' => 'text',
-                'placeholder' => 'ex: Halo Admin, berikut bukti pembayaran untuk nomor order $order_number',
+                'placeholder' => 'ex: Halo Admin, berikut bukti pembayaran sewa cloud',
                 'required' => true,
             ]
         ];
