@@ -23,7 +23,7 @@ $whatsappLink = "https://wa.me/$whatsapp_number?text=$confirmation_message%0AOrd
                     <div class="p-8">
                         <h1 class="text-2xl font-bold mb-6 text-center">Gerbang Pembayaran Manual</h1>
                         <div class="flex justify-center mb-6">
-                            <img id="Logo" src="/img/logo.png" alt="Logo" class="w-56 h-56" />
+                            <img id="Logo" src="/img/logo.png" alt="Logo" class="h-56" />
                         </div>
 
                         <h2 class="text-xl font-semibold mb-6 text-center">Pilih Metode Pembayaran:</h2>
