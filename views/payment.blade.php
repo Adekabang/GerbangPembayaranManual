@@ -154,8 +154,8 @@ $whatsappLink = "https://wa.me/$whatsapp_number?text=$confirmation_message%0AOrd
                                 class="block w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded text-center">Kirim
                                 bukti pembayaran via Whatsapp</a>
                             <a href="{{ $back_invoice }}"
-                                class="block w-full border-2 border-gray-200 hover:bg-gray-100 text-gray-900 font-bold py-2 px-4 rounded text-center">Back
-                                to Invoice</a>
+                                class="block w-full border-2 border-gray-200 hover:bg-gray-100 text-gray-900 font-bold py-2 px-4 rounded text-center">Kembali
+                                ke Invoice</a>
                         </div>
                         <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-4 mt-6" role="alert">
                             <p class="mb-3">Pembayaran Anda diproses secara manual. Setelah melakukan pembayaran, harap
