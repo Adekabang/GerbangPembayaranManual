@@ -16,68 +16,97 @@ $whatsappLink = "https://wa.me/$whatsapp_number?text=$confirmation_message%0AOrd
 </head>
 
 <body class="bg-gray-100">
-    <div class="container mx-auto py-10">
+    <div class="container mx-auto py-10 my-5">
         <div class="flex justify-center">
             <div class="w-full max-w-2xl">
-                <div class="bg-white shadow-xl rounded-lg">
-                    <div class="p-8">
-                        <h1 class="text-2xl font-bold mb-6 text-center">Gerbang Pembayaran Manual</h1>
-                        <div class="flex justify-center mb-6">
-                            <img id="Logo" src="/img/logo.png" alt="Logo" class="h-56" />
-                        </div>
+                <div class="bg-white shadow-xl rounded-lg py-5">
+                    <h1 class="text-2xl font-bold mb-6 text-center">Gerbang Pembayaran Manual</h1>
+                    <div class="flex justify-center mb-6">
+                        <img id="Logo" src="/img/logo.png" alt="Logo" class="h-36" />
+                    </div>
+                    <div class="max-w-sm text-center mx-auto">
+                        <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+                            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center"
+                                id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content"
+                                data-tabs-active-classes="text-gray-600 hover:text-gray-600 border-gray-900"
+                                data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300"
+                                role="tablist">
+                                @foreach ($bank_list as $bank_name)
+                                <li class="me-2" role="presentation">
+                                    <button class="inline-block p-2 border-b-2 border-t-2 rounded-t-lg"
+                                        id="bank-account-{{ $loop->index }}-styled-tab"
+                                        data-tabs-target="#styled-bank-account-{{ $loop->index }}" type="button"
+                                        role="tab" aria-controls="bank-account-{{ $loop->index }}"
+                                        aria-selected="false">
+                                        <img id="Logo"
+                                            src="https://cdn.jsdelivr.net/gh/Adekabang/indonesia-logo-library@main/{{ $bank_name[0] }}.png"
+                                            alt="Logo" class="w-16 h-16" />
 
-                        <h2 class="text-xl font-semibold mb-6 text-center">Pilih Metode Pembayaran:</h2>
-                        @foreach ($bank_list as $bank_name)
-                        <div class="mb-5">
-                            <div class="flex items-center">
-                                <span
-                                    class="flex-shrink-0 z-10 inline-flex items-center text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg dark:bg-gray-600 dark:text-white dark:border-gray-600">
-                                    <img id="Logo"
-                                        src="https://cdn.jsdelivr.net/gh/Adekabang/indonesia-logo-library@main/{{ $bank_name }}.png"
-                                        alt="Logo" class="w-16 h-16" />
-                                </span>
-                                <div class="relative w-full">
-                                    <input id="bank-account-{{ $loop->index }}" type="text"
-                                        aria-describedby="helper-text-explanation"
-                                        class="bg-gray-50 border border-e-0 border-gray-300 text-gray-500 dark:text-gray-400 text-sm border-s-0 focus:ring-gray-500 focus:border-gray-500 block w-full h-16 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500"
-                                        value="{{ $bank_account_list[$loop->index] }}" readonly disabled />
-                                </div>
-                                <button data-tooltip-target="tooltip-bank-account-{{ $loop->index }}"
-                                    data-copy-to-clipboard-target="bank-account-{{ $loop->index }}"
-                                    class="flex-shrink-0 z-10 inline-flex items-center py-3 px-4 text-sm font-medium text-center text-white bg-gray-700 rounded-e-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 border border-gray-700 dark:border-gray-600 hover:border-gray-800 dark:hover:border-gray-700 h-16"
-                                    type="button">
-                                    <span id="default-icon-bank-account-{{ $loop->index }}">
-                                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor" viewBox="0 0 18 20">
-                                            <path
-                                                d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
-                                        </svg>
-                                    </span>
-                                    <span id="success-icon-bank-account-{{ $loop->index }}"
-                                        class="hidden inline-flex items-center">
-                                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 16 12">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                        </svg>
-                                    </span>
-                                </button>
-                                <div id="tooltip-bank-account-{{ $loop->index }}" role="tooltip"
-                                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                    <span id="default-tooltip-message-bank-account-{{ $loop->index }}">Copy</span>
-                                    <span id="success-tooltip-message-bank-account-{{ $loop->index }}"
-                                        class="hidden">Copied!</span>
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div>
-                            </div>
-                            <div class="mb-2 flex justify-between items-center">
-                                <label for="bank-account-{{ $loop->index }}"
-                                    class="text-sm font-medium text-gray-900 dark:text-white">Atas
-                                    Nama:
-                                    {{ $merchant_list[$loop->index] }}</label>
-                            </div>
+                                    </button>
+                                </li>
+                                @endforeach
+                            </ul>
                         </div>
-                        @endforeach
+                        <div id="default-styled-tab-content">
+                            @foreach ($bank_list as $bank_name)
+                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800 text-left"
+                                id="styled-bank-account-{{ $loop->index }}" role="tabpanel"
+                                aria-labelledby="bank-account-{{ $loop->index }}-tab">
+                                <h3 class="text-center font-bold underline">{{ $bank_list[$loop->index][1] }}</h3>
+                                <div class="my-2">
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Account Name:</p>
+                                    <div class="font-medium text-lg text-gray-800 dark:text-white">{{
+                                        $merchant_list[$loop->index] }}</div>
+                                </div>
+                                <div class="my-2">
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Account Number:</p>
+                                    <div class="font-medium text-lg text-gray-900 dark:text-white">
+                                        <div class="w-full">
+                                            <div class="relative">
+                                                <label for="bank-account-{{ $loop->index }}"
+                                                    class="sr-only">Label</label>
+                                                <input id="bank-account-{{ $loop->index }}" type="text"
+                                                    class="font-medium text-lg text-gray-900 dark:text-white col-span-6 bg-gray-50 border border-gray-50 rounded-lg  block w-full p-2.5"
+                                                    value="{{ $bank_account_list[$loop->index] }}" disabled readonly>
+                                                <button data-copy-to-clipboard-target="bank-account-{{ $loop->index }}"
+                                                    data-tooltip-target="tooltip-bank-account-{{ $loop->index }}"
+                                                    class="absolute end-2 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-2 inline-flex items-center justify-center">
+                                                    <span id="default-icon-bank-account-{{ $loop->index }}">
+                                                        <svg class="w-3.5 h-3.5" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            viewBox="0 0 18 20">
+                                                            <path
+                                                                d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
+                                                        </svg>
+                                                    </span>
+                                                    <span id="success-icon-bank-account-{{ $loop->index }}"
+                                                        class="hidden inline-flex items-center">
+                                                        <svg class="w-3.5 h-3.5 text-gray-700 dark:text-gray-500"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 16 12">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M1 5.917 5.724 10.5 15 1.5" />
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                                <div id="tooltip-bank-account-{{ $loop->index }}" role="tooltip"
+                                                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                    <span
+                                                        id="default-tooltip-message-bank-account-{{ $loop->index }}">Copy
+                                                        to clipboard</span>
+                                                    <span id="success-tooltip-message-bank-account-{{ $loop->index }}"
+                                                        class="hidden">Copied!</span>
+                                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            @endforeach
+                        </div>
 
                         <div class=" flex justify-center items-center min-h-screen my-5">
                             <div
@@ -85,7 +114,11 @@ $whatsappLink = "https://wa.me/$whatsapp_number?text=$confirmation_message%0AOrd
                                 <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Receipt</h5>
                                 <div class="flex items-baseline text-gray-900 dark:text-white">
                                     <span class="text-3xl font-semibold">Rp</span>
-                                    <span class="text-5xl font-extrabold tracking-tight">{{ $total }}</span>
+                                    <span class="text-5xl font-extrabold tracking-tight">
+                                        {{
+                                        number_format($total, 0,',', '.')
+                                        }}
+                                    </span>
                                 </div>
                                 <ul role="list" class="space-y-5 my-7">
                                     <li class="flex space-x-3">
@@ -118,10 +151,10 @@ $whatsappLink = "https://wa.me/$whatsapp_number?text=$confirmation_message%0AOrd
 
                         <div class="space-y-3">
                             <a id="whatsapp-link" href="{{ $whatsappLink }}" target="_blank"
-                                class="block w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded text-center">Kirim
+                                class="block w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded text-center">Kirim
                                 bukti pembayaran via Whatsapp</a>
                             <a href="{{ $back_invoice }}"
-                                class="block w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded text-center">Back
+                                class="block w-full border-2 border-gray-200 hover:bg-gray-100 text-gray-900 font-bold py-2 px-4 rounded text-center">Back
                                 to Invoice</a>
                         </div>
                         <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-4 mt-6" role="alert">
